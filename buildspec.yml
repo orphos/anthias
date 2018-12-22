@@ -1,8 +1,11 @@
 version: 0.2
 
 env:
+  variables:
+    GIT_TAG: $(git describe --tags --exact-match 2>/dev/null)
   parameter-store:
     DOCKERHUB_PASS: "dockerhub-pass"
+
 phases:
   pre_build:
     commands:

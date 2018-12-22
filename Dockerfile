@@ -18,3 +18,5 @@ WORKDIR /home/user1/work
 RUN opam switch -y create . 4.07.1
 RUN opam install -y opam-lock
 
+USER root
+RUN apk --no-cache add pkgconfig python2 cmake sqlite-dev llvm5-dev

@@ -14,6 +14,6 @@ phases:
   build:
     commands:
       - docker build -t $NAME:$TAG .
-      - docker push sumito3478/$NAME:$TAG
+      - docker push $NAME:$TAG
   post_build:
     commands:

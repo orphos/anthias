@@ -2,7 +2,8 @@ version: 0.2
 
 env:
   variables:
-    GIT_TAG: $(git describe --tags --exact-match 2>/dev/null)
+    NAME: anthias
+    TAG: $(git describe --tags --exact-match 2>/dev/null || echo -n bleeding)
   parameter-store:
     DOCKERHUB_PASS: "dockerhub-pass"
 
@@ -12,7 +13,7 @@ phases:
       - docker login -u=sumito3478 -p=$DOCKERHUB_PASS
   build:
     commands:
-      - docker build -t {REPO_NAME}:{tag} .
-      - docker push sumito3478/{REPO_NAME}:{tag}
+      - docker build -t $NAME:$TAG .
+      - docker push sumito3478/$NAME:$TAG
   post_build:
     commands:

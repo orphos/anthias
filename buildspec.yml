@@ -13,7 +13,7 @@ phases:
       - docker login -u=sumito3478 -p=$DOCKERHUB_PASS
   build:
     commands:
-      - docker build -t $NAME:$TAG .
-      - docker push $NAME:$TAG
+      - docker build -t sumito3478/$NAME:$TAG .
+      - docker push sumito3478/$NAME:$TAG
   post_build:
     commands:

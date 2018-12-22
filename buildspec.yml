@@ -6,7 +6,7 @@ env:
 phases:
   pre_build:
     commands:
-      - docker login -u=sumito3478 -p={DOCKERHUB_PASS}
+      - docker login -u=sumito3478 -p=$DOCKERHUB_PASS
   build:
     commands:
       - docker build -t {REPO_NAME}:{tag} .

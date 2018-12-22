@@ -3,13 +3,13 @@ version: 0.2
 env:
   variables:
     NAME: anthias
-    TAG: $(git describe --tags --exact-match 2>/dev/null || echo -n bleeding)
   parameter-store:
     DOCKERHUB_PASS: "dockerhub-pass"
 
 phases:
   pre_build:
     commands:
+      - export TAG=$(git describe --tags --exact-match 2>/dev/null || echo -n bleeding)
       - docker login -u=sumito3478 -p=$DOCKERHUB_PASS
   build:
     commands:

@@ -10,7 +10,7 @@ RUN opam init --disable-sandboxing # See https://github.com/ocaml/opam/issues/34
 RUN echo 'eval $(opam config env)' >> /home/user1/.profile
 
 USER root
-RUN apk add musl-dev perl g++
+RUN apk --no-cache add musl-dev perl g++
 
 USER user1
 RUN mkdir -p /home/user1/work

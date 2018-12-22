@@ -2,6 +2,8 @@ version: 0.2
 
 env:
   variables:
+    USER: sumito3478
+    ORG: orphos
     NAME: anthias
   parameter-store:
     DOCKERHUB_PASS: "dockerhub-pass"
@@ -10,10 +12,10 @@ phases:
   pre_build:
     commands:
       - export TAG=$(git describe --tags --exact-match 2>/dev/null || echo -n bleeding)
-      - docker login -u=sumito3478 -p=$DOCKERHUB_PASS
+      - docker login -u=$USER -p=$DOCKERHUB_PASS
   build:
     commands:
-      - docker build -t sumito3478/$NAME:$TAG .
-      - docker push sumito3478/$NAME:$TAG
+      - docker build -t $ORG/$NAME:$TAG .
+      - docker push $ORG/$NAME:$TAG
   post_build:
     commands:
